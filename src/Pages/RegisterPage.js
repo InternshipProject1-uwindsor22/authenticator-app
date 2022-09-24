@@ -47,7 +47,7 @@ export default function RegisterPage() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <label className="mx-3">Choose file: </label>
+            <label className="mx-3">profile photo: </label>
             <input className="d-none" type="file" />
             <button className="btn btn-outline-primary">Upload</button>
             <Button disabled={loading} className="w-100" type="submit">
