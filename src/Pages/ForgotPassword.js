@@ -25,7 +25,7 @@ function ForgotPassword() {
                     </Button>
                 </Form>
                 <div className="w-100 text-center mt-3">
-                    Back to <Link to="/login">Login Page</Link> !
+                    Back to <Link to="/">Login Page</Link> !
                 </div>
                 </Card.Body>
             </Card>

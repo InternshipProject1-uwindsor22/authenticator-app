@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import { Form, Button, Card } from "react-bootstrap"
+import { Link } from 'react-router-dom';
+import {GoogleButton} from 'react-google-button';
 
 export default function LoginPage(){
 
@@ -25,17 +27,19 @@ export default function LoginPage(){
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
                     </Form.Group>
-                    <Button variant="primary"type="submit">
+                    <Button className='w-100' variant="primary"type="submit">
                     Log In
                     </Button>
+                    <div className='mb-3 mt-3 text-center'> or </div>
+                    <GoogleButton className='w-100'/>
                 </Form>
                 <div className="w-100 text-center mt-3">
-                    Forgot Password?
+                    <Link to='/forgot-password'>Forgot Password?</Link>
                 </div>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Need an account? Sign Up
+                Need an account?<Link to='/register'>Sign Up</Link> 
             </div>
 		</>
 	);
