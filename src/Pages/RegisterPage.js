@@ -8,6 +8,7 @@ export default function RegisterPage() {
   const passwordConfirmRef = useRef()
    const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [profilePhotoBytes, setProfilePhotoBytes] = useState([])
   // const history = useNavigate();
 
   async function handleSubmit(e) {
@@ -27,7 +28,25 @@ export default function RegisterPage() {
     }
     setLoading(false)
   }
-  
+
+    function getProfilePhotoBytes(e) {
+      const file = e.target.files[0];
+      const fReader = new FileReader();
+      const fileBytes = [];
+      fReader.readAsArrayBuffer(file);
+      fReader.onloadend = (et) => {
+      if (et.target.readyState === FileReader.DONE) {
+        const buf = et.target.result,
+          arr = new Uint8Array(buf);
+        for (const a of arr) {
+          fileBytes.push(a);
+        }
+        setProfilePhotoBytes(fileBytes)
+      }
+    }
+  }
+//console.log(profilePhotoBytes)
+
     return (
       <>
         <Card>
@@ -49,9 +68,7 @@ export default function RegisterPage() {
             </Form.Group>
             <br/>
             <div align = "center">
-            {/* <label className="mx-3">: </label> */}
-            <input className="d-none" type="file" />
-            <button className="btn btn-outline-primary">Upload Profile photo</button>
+            <input type="file" accept="image/png, image/jpeg" onChange={getProfilePhotoBytes}/>
             </div>
             <br/>
             <Button disabled={loading} className="w-100" type="submit">
