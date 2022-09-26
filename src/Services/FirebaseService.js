@@ -1,6 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth, provider, storage } from "./FirebaseApp";
-import { signInWithPopup, updateProfile,sendPasswordResetEmail } from "firebase/auth";
+import {
+  signInWithPopup,
+  updateProfile,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
+} from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 const AuthContext = React.createContext();
 
@@ -13,11 +19,11 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return createUserWithEmailAndPassword(auth,email, password);
   }
 
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
+    return signInWithEmailAndPassword(auth,email, password);
   }
 
   function logout() {
@@ -25,9 +31,9 @@ export function AuthProvider({ children }) {
   }
 
   function resetPassword(email) {
-    return sendPasswordResetEmail(auth,email);
+    return sendPasswordResetEmail(auth, email);
   }
-  
+
   function updateEmail(email) {
     return currentUser.updateEmail(email);
   }

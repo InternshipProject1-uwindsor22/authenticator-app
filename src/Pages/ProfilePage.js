@@ -4,9 +4,9 @@ import { useAuth } from "../Services/FirebaseService";
 import holder from "./holder.jpg";
 import { Navigate } from "react-router-dom";
 
-
 export default function ProfilePage() {
-  const { currentUser, logout} = useAuth();
+  const { currentUser, logout } = useAuth();
+  const [checked, setChecked] = useState(false);
   const handleUpdate = (e) => {
     console.log("update");
   };
@@ -17,16 +17,21 @@ export default function ProfilePage() {
   if (!currentUser) {
     return <Navigate replace to="/login" />;
   }
-  if(!currentUser.emailVerified){
+  if (!currentUser.emailVerified) {
     alert("Please verify your account first");
     logout();
   }
+  fetch(currentUser.photoURL).then((response) => {
+    if (response.status == 200) {
+      setChecked(true);
+    }
+  }).catch(()=>{});
   console.log(currentUser);
   return (
     <Card className="w-100">
       <div className="d-flex justify-content-center">
         <Card.Img
-          src={currentUser.photoURL ? currentUser.photoURL : holder}
+          src={checked ? currentUser.photoURL : holder}
           style={{ width: 200, height: 200, margin: 5 }}
         />
       </div>
