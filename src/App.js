@@ -7,6 +7,8 @@ import RegisterPage from "./Pages/RegisterPage";
 import ForgotPassword from "./Pages/ForgotPassword";
 import ProfilePage from "./Pages/ProfilePage";
 import {AuthProvider} from "./Services/FirebaseService"
+import UpdateProfile from "./Pages/UpdateProfile";
+
 function App() {
   return (
     <Container
@@ -17,7 +19,8 @@ function App() {
         <AuthProvider>
           <Router>
             <Routes>
-              <Route exact path="/register" element={<RegisterPage />} />
+              <Route exact path="/register" element={<UpdateProfile />} />
+              <Route exact path="/updateprofile" element={<UpdateProfile />} />
               <Route exact path="/login" element={<LoginPage />} />
               <Route
                 exact
