@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { GoogleButton } from "react-google-button";
 import { AuthProvider, useAuth } from "../Services/FirebaseService";
 import { Navigate } from "react-router-dom";
+import backgroundimg from './backgroundimg.jpg';
+
 export default function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -21,8 +23,8 @@ export default function LoginPage() {
     return <Navigate replace to="/profile" />;
   }
   return (
-    <div>
-      <Card>
+    <div style={{border: '2px solid #26edd3', borderBottom: '0px', borderRadius: 5, padding: 35}}>
+      <Card style={{background: 'linear-gradient(rgba(255,255,255,.3), rgba(0,0,0,.3))', padding: 5, color: 'white', border: '2px solid #c4aa33'}}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>
           <Form onSubmit={handleSubmit}>
@@ -59,8 +61,8 @@ export default function LoginPage() {
           </div>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        Need an account?<Link to="/register">Sign Up</Link>
+      <div className="w-100 text-center mt-2" style={{color: 'white'}}>
+        Need an account? <Link to="/register">Sign Up</Link>
       </div>
     </div>
   );

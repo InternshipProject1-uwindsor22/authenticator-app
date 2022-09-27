@@ -27,15 +27,15 @@ export default function ProfilePage() {
       setChecked(true);
     }
   }).catch(()=>{ setChecked(false);});
+
   return (
-    <Card className="w-100">
+    <Card className="w-100" style={{background: 'linear-gradient(rgba(255,255,255,.3), rgba(0,0,0,.3))', padding: 5, color: 'white', border: '2px solid #c4aa33'}}>
       <div className="d-flex justify-content-center">
         <Card.Img
           src={currentUser.photoURL ? currentUser.photoURL : holder}
-          style={{ width: 200, height: 200, margin: 5 }}
+          style={{ width: 200, height: 200, padding: 0, border: '0.8px solid grey', borderRadius: '50%', marginTop: 5 }}
         />
       </div>
-      <hr />
       <Card.Body>
         <h3 className="text-center">User Details </h3>
         <hr />
@@ -46,18 +46,13 @@ export default function ProfilePage() {
           <p>{currentUser.email}</p>
           <Card.Title>Email Verification Status</Card.Title>
           <p>{currentUser.emailVerified? "Verified":"Not verified"} {!currentUser.emailVerified && <Button variant="primary" onClick={handleVerify}>Verify</Button>}</p>
-
-          <Card.Title>Phone:</Card.Title>
-          <p>
-            {currentUser.phoneNumber ? currentUser.phoneNumber : "Not provided"}
-          </p>
         </div>
         <hr />
         <div className="d-flex justify-content-end">
-          <Link className="btn btn-primary" to="/updateProfile">Update</Link>
+          <Link className="btn btn-outline-primary" to="/updateProfile">Update</Link>
         </div>
         <div className="d-flex justify-content-center">
-          <Button variant="primary" onClick={handleSignOut}>
+          <Button variant="outline-danger" onClick={handleSignOut}>
             SignOut
           </Button>
         </div>

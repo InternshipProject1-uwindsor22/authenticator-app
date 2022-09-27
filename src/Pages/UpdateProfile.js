@@ -20,6 +20,7 @@ export default function UpdateProfile() {
     updateName,
     updateEmailM,
   } = useAuth();
+
   const [nameRef,setNameRef] = useState(currentUser.displayName);
   const [emailRef,setEmailRef] = useState(currentUser.email);
   const [phoneNumber,setPhoneNumber] = useState(currentUser.phoneNumber);
@@ -90,12 +91,12 @@ export default function UpdateProfile() {
 
   return (
     <div>
-      <Card>
+      <Card style={{background: 'linear-gradient(rgba(255,255,255,.3), rgba(0,0,0,.3))', padding: 10, color: 'white', border: '2px solid #c4aa33'}}>
         <Card.Body>
           <h2 className="text-center mb-4">Update Your Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="name">
+            <Form.Group id="name" className="mb-3">
               <Form.Label>Update your Name</Form.Label>
               <Form.Control
                 type="text"
@@ -105,7 +106,7 @@ export default function UpdateProfile() {
                 onChange={(e)=>{setNameRef(e.target.value)}}
               ></Form.Control>
             </Form.Group>
-            <Form.Group id="email">
+            <Form.Group id="email" className="mb-3">
               <Form.Label>Update your Email</Form.Label>
               <Form.Control
                 type="email"
@@ -114,8 +115,7 @@ export default function UpdateProfile() {
                 onChange={(e)=>{setEmailRef(e.target.value)}}
               />
             </Form.Group>
-            <br />
-            <Form.Group id="Image">
+            <Form.Group id="Image" className="mb-3">
               <Form.Label>Update Image</Form.Label>
               <Form.Control
                 type="file"
@@ -134,20 +134,20 @@ export default function UpdateProfile() {
                 placeholder="Enter url"
               />
             </Form.Group>
-            <br />
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100 mb-3 btn btn-success" type="submit">
               Save
             </Button>
-            <br />
-            <br />
-            <div className="d-flex">
-              <div className="d-flex justify-content-start">
-                <Button variant="primary" onClick={handleReset}>
+            <div className="d-flex justify-content-center">
+              <div>
+                <Button 
+                  variant="outline-success"
+                  style={{marginRight: 10}}
+                  onClick={handleReset}>
                   Reset Password
                 </Button>
               </div>
-              <div className="d-flex justify-content-end">
-                <Link className="btn btn-primary" to="/profile">
+              <div>
+                <Link className="btn btn-outline-danger" to="/profile">
                   Cancel
                 </Link>
               </div>

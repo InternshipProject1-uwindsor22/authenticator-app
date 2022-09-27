@@ -7,10 +7,13 @@
 	font-family: Raleway, sans-serif;
 }
 
-body {
-	background: linear-gradient(45deg, #C7C5F4, #776BCC);		
-}
-
+body { 
+	background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(./Pages/backgroundimg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  }
 .container {
 	display: flex;
 	align-items: center;

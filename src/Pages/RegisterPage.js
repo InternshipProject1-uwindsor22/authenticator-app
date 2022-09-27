@@ -74,13 +74,13 @@ export default function RegisterPage() {
   }
 
   return (
-    <div>
-      <Card>
+    <div style={{border: '2px solid #26edd3', borderBottom: '0px', borderRadius: 5, padding: 35}}>
+      <Card style={{background: 'linear-gradient(rgba(255,255,255,.3), rgba(0,0,0,.3))', padding: 5, color: 'white', border: '2px solid #c4aa33'}}>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
+            <Form.Group id="email" className="mb-3">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -89,24 +89,23 @@ export default function RegisterPage() {
                 className="email--input"
               />
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group id="password" className="mb-3">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Form.Group id="password-confirm">
+            <Form.Group id="password-confirm" className="mb-4">
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <br />
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100 mb-3" type="submit">
               Sign Up
             </Button>
           </Form>
         </Card.Body>
-        <div className="w-100 text-center mt-2">
+        </Card>
+        <div className="w-100 text-center mt-2" style={{color: 'white'}}>
           Already have an account? <Link to="/">Log In</Link>
         </div>
-      </Card>
     </div>
   );
 }
