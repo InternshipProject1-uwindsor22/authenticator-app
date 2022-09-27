@@ -12,24 +12,58 @@ export default function UpdateProfile() {
 	const emailRef = useRef();
 	const phoneNumber = useRef();
 
+
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [calendar, setCalendar] = useState("");
 
-	const [birthDate, setBirthDate] = useState("");
+	
 	const [open, setOpen] = useState(false);
 
 	const photoUrl = useRef("");
 	const [profilePhoto, setProfilePhoto] = useState();
 	const [profilePhotoBytes, setProfilePhotoBytes] = useState([]);
+	const refOne = useRef(null);
+	useEffect(() => {
+		document.addEventListener("keydown", hideOnEscape, true);
+		document.addEventListener("click", hideOnClickOutside, true);
+	}, []);
+
+	const hideOnEscape = (e) => {
+		// console.log(e.key)
+		if (e.key === "Escape") {
+			setOpen(false);
+		}
+	};
+
+	// Hide on outside click
+	const hideOnClickOutside = (e) => {
+		// console.log(refOne.current)
+		// console.log(e.target)
+		if (refOne.current && !refOne.current.contains(e.target)) {
+			setOpen(false);
+		}
+	};
 
 	const handleSelect = (date) => {
-		setBirthDate(format(date, "MM/dd/yyyy"));
+		setCalendar(format(date, "MM/dd/yyyy"));
 	};
 
 	// get the target element to toggle
 
 	async function handleSubmit(e) {
 		e.preventDefault();
+		setLoading(true);
+		var regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+	
+		if (regex.test(phoneNumber.current.value)) {
+			// Valid international phone number
+			// console.log("valid number")
+		} else {
+			setError("Invalid phone number")
+			return;
+		}
+		setLoading(false);
 		
 	}
 
@@ -68,17 +102,19 @@ export default function UpdateProfile() {
 							/>
 						</Form.Group>
 						<Form.Group id='calender'>
-							<Form.Label>Update your Birth Date</Form.Label>
+							<Form.Label>Your Birth Date</Form.Label>
 							<Form.Control
 								type='text'
-								value={birthDate}
+								value={calendar}
 								placeholder='Select your birth date'
 								readOnly
 								onClick={() => setOpen((open) => !open)}
 							/>
-
-							{open && <Calendar date={new Date()} onChange={handleSelect} />}
+							<div ref={refOne}>
+								{open && <Calendar date={new Date()} onChange={handleSelect} />}
+							</div>
 						</Form.Group>
+
 						<Form.Group id='phonenumber'>
 							<Form.Label>Update your Phone number</Form.Label>
 
