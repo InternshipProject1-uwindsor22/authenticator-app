@@ -19,3 +19,10 @@ This application is created in React and Firebase. Navigation is created using "
 ###### Back ground Detail of Project
 
 This project is academic assignment to demonstrate agile methodology. Zenhub and github is used for project management.
+
+###### Results
+
+![ScreenShot of LogIn Page](https://github.com/InternshipProject1-uwindsor22/authenticator-app/blob/main/Results/LogIn.png?raw=true)
+
+
+![ScreenShot of Profile Page](https://github.com/InternshipProject1-uwindsor22/authenticator-app/blob/main/Results/Profile.png?raw=true)
