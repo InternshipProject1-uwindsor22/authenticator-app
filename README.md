@@ -12,9 +12,9 @@ This application is created in React and Firebase. Navigation is created using "
 * [X] User can retrive account using forget password
 * [X] User can do email verification
 * [X] User can login using Google auth
-* [ ] User can upload profile image
-* [ ] User can update information
-* [ ] User can register new account
+* [X] User can upload profile image
+* [X] User can update information
+* [X] User can register new account
 
 ###### Back ground Detail of Project
 
