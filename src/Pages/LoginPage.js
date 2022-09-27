@@ -18,7 +18,7 @@ export default function LoginPage() {
     signInWithGoogle();
   };
   if (currentUser) {
-    return <Navigate replace to="/" />;
+    return <Navigate replace to="/profile" />;
   }
   return (
     <div>

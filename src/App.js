@@ -21,13 +21,13 @@ function App() {
             <Routes>
               <Route exact path="/register" element={<RegisterPage />} />
               <Route exact path="/updateprofile" element={<UpdateProfile />} />
-              <Route exact path="/login" element={<LoginPage />} />
+              <Route exact path="/" element={<LoginPage />} />
               <Route
                 exact
                 path="/forgot-password"
                 element={<ForgotPassword />}
               />
-              <Route exact path="/" element={<ProfilePage />} />
+              <Route exact path="/profile" element={<ProfilePage />} />
             </Routes>
           </Router>
         </AuthProvider>
