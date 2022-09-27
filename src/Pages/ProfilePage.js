@@ -1,10 +1,13 @@
 import React, { useRef, useState } from "react";
 import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useAuth } from "../Services/FirebaseService";
 import holder from "./holder.jpg";
 import { Navigate } from "react-router-dom";
 
+
 export default function ProfilePage() {
+
 	const { currentUser, logout } = useAuth();
 	const [checked, setChecked] = useState(false);
 	const handleUpdate = (e) => {
@@ -54,7 +57,7 @@ export default function ProfilePage() {
 				<hr />
 				<div className='d-flex justify-content-end'>
 					<Button variant='primary' onClick={handleUpdate}>
-						Update Profile
+						<Link to="/updateprofile" > Update Profile</Link>
 					</Button>
 				</div>
 				<div className='d-flex justify-content-center'>
